@@ -11,19 +11,32 @@ function openLetter() {
   envelope.classList.add("open");
   envelope.setAttribute("aria-expanded", "true");
 
-  // 1) Nắp thư mở ra, con dấu biến mất, lá thư nhô lên.
+  // 1) Gỡ con dấu trước.
+  window.setTimeout(() => {
+    envelope.classList.add("unsealed");
+  }, 180);
+
+  // 2) Sau đó mới lật nắp phong bì.
+  window.setTimeout(() => {
+    envelope.classList.add("flap-open");
+  }, 760);
+
+  // 3) Chờ nắp mở gần hết rồi mới kéo lá thư lên.
+  window.setTimeout(() => {
+    envelope.classList.add("lift");
+  }, 1650);
+
+  // 4) Lá thư tách hẳn khỏi phong bì và bung thành tờ đầy đủ.
   window.setTimeout(() => {
     envelope.classList.add("extracted");
-  }, 900);
+  }, 2850);
 
-  // 2) Sau khi lá thư đã tách khỏi phong bì, chuyển sang trạng thái đọc.
+  // 5) Kết thúc animation rồi mới cho cuộn trang.
   window.setTimeout(() => {
     document.body.classList.remove("letter-opening");
     document.body.classList.add("letter-open");
-
-    const paper = envelope.querySelector(".paper");
-    if (paper) paper.scrollTop = 0;
-  }, 1500);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, 3700);
 }
 
 envelope.addEventListener("click", openLetter);
