@@ -11,3 +11,53 @@
 .envelope.open.extracted .back,.envelope.open.extracted .pocket{transition:opacity .85s ease,transform 1.05s cubic-bezier(.18,.72,.2,1)}
 .envelope.open.extracted .letter{transition:width 1s cubic-bezier(.18,.72,.2,1),left 1s cubic-bezier(.18,.72,.2,1),height 1s cubic-bezier(.18,.72,.2,1),bottom 1s cubic-bezier(.18,.72,.2,1),transform .9s cubic-bezier(.18,.72,.2,1)}
 @media(max-width:620px){.envelope.open.lift .letter{transform:translateY(-138px) scale(1.01)}}
+
+/* Floating & Burst Hearts Effect */
+.floating-heart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  user-select: none;
+  will-change: transform, opacity;
+  animation: floatHeartAnim 4.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes floatHeartAnim {
+  0% {
+    transform: translate(0, 0) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(var(--sway-x, 20px), -105vh) scale(var(--end-scale, 1.1)) rotate(var(--rot, 25deg));
+    opacity: 0;
+  }
+}
+
+.burst-heart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  user-select: none;
+  will-change: transform, opacity;
+  animation: burstHeartAnim 2.2s cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
+}
+
+@keyframes burstHeartAnim {
+  0% {
+    transform: translate(-50%, -50%) translate(0, 0) scale(0.3) rotate(0deg);
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(var(--tx), var(--ty)) scale(var(--scale, 1.2)) rotate(var(--rot, 35deg));
+    opacity: 0;
+  }
+}
