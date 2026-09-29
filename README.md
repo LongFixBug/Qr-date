@@ -1,6 +1,6 @@
 # Qr-date
 
-Một landing page nhỏ dành cho lời mời hẹn Chủ nhật.
+Một landing page nhỏ dành cho lời mời hẹn tối mai gửi Hải Vân.
 
 ## Trải nghiệm
 
